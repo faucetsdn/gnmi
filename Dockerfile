@@ -1,16 +1,11 @@
 ## Image name: faucet/gnmi
 
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qy --no-install-recommends \
-      apt-utils \
-      ca-certificates \
-      software-properties-common \
-    && add-apt-repository -y ppa:longsleep/golang-backports \
-    && apt-get update
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy --no-install-recommends \
+RUN apt-get update && apt-get install -qy --no-install-recommends \
+    ca-certificates \
     fping \
     git \
     golang-go \
